@@ -14,27 +14,35 @@
 					<a href="index.html" class="logo">
 						<span class="symbol"><img src="images/logo.svg" alt="" /></span><span class="title">Portfolio</span>
 					</a>
-					<nav><ul><li><a href="#menu">Menu</a></li></ul></nav>
+					<nav><ul><li><a href="#menu">Portfolio</a></li></ul></nav>
 				</div>
 			</header>
-			<nav id="menu">
-				<h2>Menu</h2>
-				<ul>
-					<li><a href="index.html">Home</a></li>
-				</ul>
-			</nav>
+				<nav id="menu">
+					<h2>Menu</h2>
+					<ul>
+						<li><a href="index.html">Portfolio</a></li>
+						<li><a href="education.html">Education</a></li>
+						<li><a href="certifications.html">Certifications</a></li>
+					</ul>
+				</nav>
 
 			<div id="main">
 				<div class="inner">
 					<h1>Anti-Aircraft Defence System</h1>
-					<span class="image main"><img src="images/anti-aircraft-banner.jpg" alt="Anti-Aircraft Project" /></span>
-					<p>A comprehensive engineering project focused on the dynamic simulation and control strategy of an anti-aircraft defence system.</p>
-					<p>The study involved mathematical modeling of kinematics and dynamics, simulating trajectory tracking, and developing robust control algorithms to ensure high precision target interception under varying environmental conditions.</p>
-					
+					<p>
+						<span class="image left"><img src="images/anti-aircraft-banner.jpg" alt="AADS" /></span>
+						This project focuses on the modeling and control of an automated 1:1 scale Anti-Aircraft Defense System (AADS) turret, based on the OTO 76/62 SR naval platform. Designed to track agile targets like the MQ-9 Reaper UAV at ranges up to 5000m, the plant was modeled as a 2-DOF serial mechanism using Euler-Lagrange dynamics coupled with a Stribeck friction model. I synthesized a bandwidth-separated cascaded control architecture integrated with a 9-state Extended Kalman Filter (EKF) for precise trajectory lead prediction. The end-to-end perception pipeline fuses a K-band MESA radar, LWIR thermal sensors, and an RGB camera running a YOLO object detector (79.3% precision), all validated within an NVIDIA Isaac Sim virtual war scenario.
+					</p>
+					<div style="clear: both;"></div>
+
 					<h3 style="margin-top: 2em;">Tools and Technologies</h3>
 					<ul>
-						<li><strong>Software:</strong> MATLAB, Simulink</li>
-						<li><strong>Key Concepts:</strong> Control Theory, System Dynamics, Trajectory Simulation</li>
+						<li><strong>Simulation & Control:</strong> MATLAB, Simulink, Simscape Multibody, NVIDIA Isaac Sim</li>
+						<li><strong>Computer Vision:</strong> Python, YOLOv8, Lucas-Kanade Optical Flow</li>
+					</ul>
+					<ul class="actions" style="margin-top: 2em;">
+						<li><a href="docs/MKM_506E___Final_Report.pdf" target="_blank" class="button primary icon solid fa-download">View Report</a></li>
+						<li><a href="docs/AADS_Final_Presentation.pptx.pdf" target="_blank" class="button icon solid fa-download">View Presentation</a></li>
 					</ul>
 				</div>
 			</div>

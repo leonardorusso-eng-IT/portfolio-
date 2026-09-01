@@ -14,27 +14,36 @@
 					<a href="index.html" class="logo">
 						<span class="symbol"><img src="images/logo.svg" alt="" /></span><span class="title">Portfolio</span>
 					</a>
-					<nav><ul><li><a href="#menu">Menu</a></li></ul></nav>
+					<nav><ul><li><a href="#menu">Portfolio</a></li></ul></nav>
 				</div>
 			</header>
-			<nav id="menu">
-				<h2>Menu</h2>
-				<ul>
-					<li><a href="index.html">Home</a></li>
-				</ul>
-			</nav>
+			<!-- Menu -->
+				<nav id="menu">
+					<h2>Menu</h2>
+					<ul>
+						<li><a href="index.html">Portfolio</a></li>
+						<li><a href="education.html">Education</a></li>
+						<li><a href="certifications.html">Certifications</a></li>
+					</ul>
+				</nav>
 
 			<div id="main">
 				<div class="inner">
 					<h1>Deep Learning Anomaly Detection</h1>
-					<span class="image main"><img src="images/anomaly-detection-banner.jpg" alt="Anomaly Detection Project" /></span>
-					<p>Applied deep learning project focused on identifying manufacturing defects using unsupervised computer vision models.</p>
-					<p>Utilizing the standard MVTec AD dataset, I developed and trained models capable of recognizing structural and textural anomalies on industrial components without prior labeling of the defects. The project demonstrates the potential of AI in automating quality control processes.</p>
-					
+					<p>
+						<span class="image left"><img src="images/anomaly-detection-banner.jpg" alt="Anomaly Detection" /></span>
+						This research evaluates unsupervised generative models for automated industrial visual inspection and defect localization. Utilizing Convolutional Autoencoders (CAE) and Adversarial Autoencoders (AAE), the models were trained exclusively on nominal data from the MVTec AD dataset to reconstruct defect-free structures. Unseen anomalies are isolated through pixel-precise reconstruction errors. To overcome the limitations of standard L2 loss on complex textures, the system implements a custom Multi-Scale Structural Similarity (MS-SSIM) loss function. Furthermore, the pipeline relies on an automated binary search calibration loop for optimal operational thresholding and adaptive spatial noise filtering via connected-component analysis.
+					</p>
+					<div style="clear: both;"></div>
+
 					<h3 style="margin-top: 2em;">Tools and Technologies</h3>
 					<ul>
-						<li><strong>Software & Frameworks:</strong> Python, PyTorch, TensorFlow</li>
-						<li><strong>Key Concepts:</strong> Unsupervised Learning, Computer Vision, Quality Control</li>
+						<li><strong>Machine Learning:</strong> PyTorch, Torchvision, Generative Autoencoders (CAE/AAE)</li>
+						<li><strong>Algorithms:</strong> MS-SSIM, Morphological Filtering, Binary Search Calibration</li>
+					</ul>
+					<ul class="actions" style="margin-top: 2em;">
+						<li><a href="docs/BLG_561E___Anomaly_detection.pdf" target="_blank" class="button primary icon solid fa-download">View Paper</a></li>
+						<li><a href="docs/BLG561E_-_Final_Presentation.pptx" target="_blank" class="button icon solid fa-download">View Presentation</a></li>
 					</ul>
 				</div>
 			</div>

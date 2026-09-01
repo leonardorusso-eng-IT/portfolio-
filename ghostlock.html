@@ -14,27 +14,33 @@
 					<a href="index.html" class="logo">
 						<span class="symbol"><img src="images/logo.svg" alt="" /></span><span class="title">Portfolio</span>
 					</a>
-					<nav><ul><li><a href="#menu">Menu</a></li></ul></nav>
+					<nav><ul><li><a href="#menu">Portfolio</a></li></ul></nav>
 				</div>
 			</header>
-			<nav id="menu">
-				<h2>Menu</h2>
-				<ul>
-					<li><a href="index.html">Home</a></li>
-				</ul>
-			</nav>
-
+				<nav id="menu">
+					<h2>Menu</h2>
+					<ul>
+						<li><a href="index.html">Portfolio</a></li>
+						<li><a href="education.html">Education</a></li>
+						<li><a href="certifications.html">Certifications</a></li>
+					</ul>
+				</nav>
 			<div id="main">
 				<div class="inner">
 					<h1>Ghostlock - EDTH Hackathon</h1>
-					<span class="image main"><img src="images/ghostlock-banner.jpg" alt="Ghostlock Project" /></span>
-					<p>Winner of the 1st place at the EDTH Hackathon, Ghostlock is an innovative edge-native interceptor system designed for advanced drone tracking.</p>
-					<p>The project leverages computer vision algorithms to detect, track, and lock onto unauthorized drones in real-time. By processing data directly at the edge, the system ensures minimal latency and high reliability in critical scenarios.</p>
-					
+					<p>
+						<span class="image left"><img src="images/ghostlock-banner.jpg" alt="Ghostlock" /></span>
+						Winning 1st Place Overall at the European Defense Tech Hackathon, GhostLock is an edge-native autonomous Counter-UAS interceptor drone tailored for GPS-denied environments. As Team Leader and Mechatronics Engineer, I co-developed the closed-loop perception-to-pursuit logic integrating an NVIDIA Jetson Orin Nano and a Pixhawk 6C flight controller. By fine-tuning YOLO models and implementing Global Motion Compensation (GMC), we reduced the edge-detection compute load by 89% using an adaptive region-of-interest strategy. Additionally, I implemented a 3D localization pipeline via visual triangulation and Kalman filtering, achieving a 2.72m mean tracking deviation without reliance on ground stations.
+					</p>
+					<div style="clear: both;"></div>
+
 					<h3 style="margin-top: 2em;">Tools and Technologies</h3>
 					<ul>
-						<li><strong>Software & Vision:</strong> Python, OpenCV, YOLO</li>
-						<li><strong>Architecture:</strong> Edge Computing</li>
+						<li><strong>Software & Vision:</strong> Python, YOLO, Kalman Filter, OpenCV</li>
+						<li><strong>Hardware:</strong> NVIDIA Jetson Orin Nano, Pixhawk 6C</li>
+					</ul>
+					<ul class="actions" style="margin-top: 2em;">
+						<li><a href="docs/Ghostlock_Documentation.pdf" target="_blank" class="button primary icon solid fa-download">View Documentation</a></li>
 					</ul>
 				</div>
 			</div>
