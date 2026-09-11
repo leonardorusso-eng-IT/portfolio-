@@ -31,8 +31,33 @@
 				<div class="inner">
 					<h1>Deep Learning Anomaly Detection</h1>
 					<p>
-						<span class="image left"><img src="images/anomaly-detection-banner.jpg" alt="Anomaly Detection" /></span>
-						This research evaluates unsupervised generative models for automated industrial visual inspection and defect localization. Utilizing Convolutional Autoencoders (CAE) and Adversarial Autoencoders (AAE), the models were trained exclusively on nominal data from the MVTec AD dataset to reconstruct defect-free structures. Unseen anomalies are isolated through pixel-precise reconstruction errors. To overcome the limitations of standard L2 loss on complex textures, the system implements a custom Multi-Scale Structural Similarity (MS-SSIM) loss function. Furthermore, the pipeline relies on an automated binary search calibration loop for optimal operational thresholding and adaptive spatial noise filtering via connected-component analysis.
+						<span class="image left"><img src="images/anomaly-banner.jpg" alt="Real, generated, difference and detection pipeline on a wood sample" /></span>
+						This project evaluates unsupervised generative models for automated industrial visual inspection and defect localization on the MVTec AD benchmark (15 categories, 3,629 nominal training images, 1,725 test images spanning 73 defect types). By training exclusively on defect-free samples, a Convolutional Autoencoder (CAE) and an Adversarial Autoencoder (AAE) learn to reconstruct nominal textures and geometries; at test time, unseen anomalies fail to reconstruct correctly, and the resulting pixel-wise reconstruction error &mdash; visualized above for a wood sample (real / generated / difference / final detection) &mdash; directly localizes the defect.
+					</p>
+					<div style="clear: both;"></div>
+
+					<h3 style="margin-top: 2em;">Dataset &amp; Model Architectures</h3>
+					<div class="row">
+						<div class="col-6 col-12-small">
+							<span class="image fit"><img src="images/anomaly-dataset-textures.jpg" alt="MVTec AD texture categories: Carpet, Grid, Leather, Tile, Wood" /></span>
+						</div>
+						<div class="col-6 col-12-small">
+							<span class="image fit"><img src="images/anomaly-dataset-objects.jpg" alt="MVTec AD object categories: Bottle, Cable, Capsule, Hazelnut, Metal nut" /></span>
+						</div>
+					</div>
+					<p>
+						MVTec AD covers both regular/random textures (Carpet, Grid, Leather, Tile, Wood &mdash; top row) and rigid or deformable manufactured objects (Bottle, Cable, Capsule, Hazelnut, Metal nut &mdash; bottom row), each with nominal (green border) and defective (red border) examples. The 7-layer strided-convolutional CAE encodes images (256&times;256, RGB) through channel depths of 32&ndash;1024 into a dense bottleneck, decoding via a symmetric transposed-convolutional decoder; the AAE instead routes the encoding through a 512-d layer producing a mean/log-variance pair for reparameterized latent sampling, regularized by a 1D adversarial discriminator that pulls the latent distribution toward a Gaussian prior. Training data was expanded to 10,000 patches per category via class-aware augmentation (rotated crops for textures, translation/rotation/mirroring respecting object symmetry for objects).
+					</p>
+
+					<h3 style="margin-top: 2em;">Loss Functions &amp; Thresholding</h3>
+					<p>
+						To overcome the tendency of a plain L2 (MSE) loss to blur sharp edges on complex textures, the pipeline implements a custom Multi-Scale Structural Similarity (MS-SSIM) loss evaluated over 5 pooling levels with normalized Wang weights, with positive-range corrections to keep it numerically stable under extreme saturation. Joint CAE/AAE training required careful gradient stabilization: discriminator output clipping (&epsilon;=10<sup>-7</sup>), 1.0 gradient-norm clipping, bidirectional label smoothing (0.9/0.1), and an asymmetric 1:5 discriminator/encoder learning-rate split. At inference, an automated binary-search routine calibrates the anomaly-map decision threshold on a held-out validation split, after which connected-component analysis filters isolated regions smaller than a resolution-adaptive minimum area (scaled from a 50 px baseline at 900&times;900) to suppress noise-driven false positives.
+					</p>
+
+					<h3 style="margin-top: 2em;">Results</h3>
+					<p>
+						<span class="image left"><img src="images/anomaly-pipeline-bottle.jpg" alt="Real, generated, difference and detection pipeline on a bottle sample" /></span>
+						Benchmarked with pixel-level ROC-AUC and AU-PRO against the MVTec baselines (CAE-SSIM, CAE-L2, AnoGAN), the results show a clear architecture/defect-type trade-off: the CAE's quadratic loss handles large, diffuse anomalies well but blurs sharp edges, while the AAE's adversarial latent constraint preserves fine detail and isolates small cracks or scratches more effectively. The MS-SSIM variants trade some pixel-level ROC-AUC for smoother, more stable segmentation regions on small localized defects (higher AU-PRO), confirming that the right architecture/loss combination depends on the target defect's morphology and scale rather than a single method dominating across all categories.
 					</p>
 					<div style="clear: both;"></div>
 
@@ -40,6 +65,7 @@
 					<ul>
 						<li><strong>Machine Learning:</strong> PyTorch, Torchvision, Generative Autoencoders (CAE/AAE)</li>
 						<li><strong>Algorithms:</strong> MS-SSIM, Morphological Filtering, Binary Search Calibration</li>
+						<li><strong>Key Concepts:</strong> Unsupervised anomaly detection, adversarial regularization, reconstruction-based defect localization</li>
 					</ul>
 					<ul class="actions" style="margin-top: 2em;">
 						<li><a href="docs/BLG_561E___Anomaly_detection.pdf" target="_blank" class="button primary icon solid fa-download">View Paper</a></li>

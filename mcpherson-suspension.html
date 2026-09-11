@@ -31,33 +31,61 @@
 					<h1>McPherson Suspension Design</h1>
 					<p>
 						<span class="image left"><img src="images/mcpherson-suspension-banner.jpg" alt="McPherson suspension assembly" /></span>
-						Design of a front McPherson suspension for a front-wheel-drive vehicle, developed for the "Road and Off-Road Vehicle Design" course at Politecnico di Milano. Starting from target camber and steering angle curves as a function of wheel travel, the suspension's kinematic hardpoints were optimized with an Artificial Neural Network trained on kinematic simulations, coupled to a constrained non-linear optimization (SQP) in MATLAB that minimized the error between the ANN-predicted camber/steer curves and the targets, within the allowable packaging space for each joint.
+						Design of the overall assembly of a McPherson strut for a front-drive axle, developed for the "Road and Off-Road Vehicle Design" course at Politecnico di Milano, with particular focus on the suspension's lower arm. Starting from target camber and steering angle curves at nominal position, full compression and full extension, the suspension's kinematic hardpoints were optimized, the resulting loads were used to size and validate the lower arm, and the complete assembly was modeled and drawn up to production-drawing level.
 					</p>
 					<div style="clear: both;"></div>
 
-					<h3 style="margin-top: 2em;">Lower Arm Design & Structural Verification</h3>
+					<h3 style="margin-top: 2em;">Suspension Kinematics and Optimization</h3>
 					<p>
-						<span class="image left"><img src="images/mcpherson-suspension-2.jpg" alt="Suspension kinematic hardpoints" /></span>
-						With the kinematics fixed, the worst-case combined loading condition (vertical, lateral and longitudinal forces applied simultaneously at the contact patch) was used to derive the reaction forces at the lower arm's bushings. The lower arm itself was designed for die casting in aluminium alloy EN AB 46000, starting from a rough first sketch, refined through SolidWorks' topological optimization to guide material distribution, and converted into a manufacturable final geometry complete with draft angles and a parting plane.
-						<span class="image right"><img src="images/mcpherson-suspension-3.jpg" alt="Lower arm final design" /></span>
+						<span class="image left"><img src="images/mcpherson-kinematics.jpg" alt="Main kinematic points of the McPherson suspension" /></span>
+						The suspension is defined by 8 kinematic points (upper strut mount, lower ball joint, the two lower-arm-to-chassis joints, wheel center and contact patch, and the steering rod joints), some fixed by the vehicle layout and others free within a bounded range. Five of these coordinates were treated as design variables and optimized in MATLAB &mdash; using a SimMechanics model to compute camber and steer as a function of wheel travel, and the <code>fmincon</code> solver with a Weighted Sum Method on the RMSE of the camber and steering curves &mdash; to match the target angles at full compression, nominal position and full extension within 0.28% deviation.
 					</p>
 					<div style="clear: both;"></div>
-					<ul>
-						<li><strong>Kinematic Optimization:</strong> ANN-based surrogate model of suspension kinematics + SQP optimization in MATLAB to hit camber/steer targets at full compression, nominal and full extension.</li>
-						<li><strong>Structural Sizing:</strong> Worst-case load computation (k=2.5 dynamic factor) and equilibrium-based sizing of the lower arm's critical cross-section.</li>
-						<li><strong>Manufacturing-Driven Design:</strong> Topological optimization followed by a die-casting-compatible redesign, reaching a final weight of 3.51 kg.</li>
-						<li><strong>FEA Validation:</strong> Finite element verification of the final lower arm design, confirming a safety factor of 1.37 against yielding.</li>
-					</ul>
+					<p>
+						<span class="image right"><img src="images/mcpherson-optimization.jpg" alt="Camber and steering angle curves after optimization" /></span>
+						The plots on the right compare the optimized camber and steering curves (blue) against the target values (red circles) across the full wheel travel range, confirming the fitted kinematic point coordinates reproduce the required suspension behavior.
+					</p>
+					<div style="clear: both;"></div>
+
+					<h3 style="margin-top: 2em;">Lower Arm: Loads, Envelope and Material</h3>
+					<p>
+						The lower arm was sized for the worst-case combined loading condition &mdash; simultaneous vertical, longitudinal and lateral forces at the contact patch, with the vertical load amplified by a k=2.5 factor for road irregularities and bump events. Resolving static equilibrium at the lower-arm bushings under this condition gives reaction forces of B<sub>u</sub> = 5.88&times;10<sup>3</sup> N and B<sub>v</sub> = 1.40&times;10<sup>4</sup> N, which govern the sizing of the component's critical cross-section.
+					</p>
+					<p>
+						<span class="image left"><img src="images/mcpherson-envelope.jpg" alt="Lower arm shape overlaid with the wheel's steering envelope" /></span>
+						The lower arm's shape also has to clear the wheel's full steering envelope &mdash; 37&deg; inward and 32&deg; outward from the nominal position &mdash; without interference, shown here as the orange sweep overlaid on the arm geometry. This packaging constraint, together with the die/forging draft requirements, drove the final planform of the component.
+					</p>
+					<div style="clear: both;"></div>
+					<p>
+						The selected material is 6061-T6 aluminium alloy (yield strength 275 MPa), manufactured via closed-die forging from cast billets and finish-machined on the functional surfaces &mdash; a process chosen for its balance of strength, formability and fatigue resistance in automotive suspension components.
+					</p>
+
+					<h3 style="margin-top: 2em;">Finite Element Analysis of the Lower Arm</h3>
+					<p>
+						<span class="image left"><img src="images/mcpherson-fem-stress.jpg" alt="Von Mises stress distribution on the lower arm" /></span>
+						<span class="image right"><img src="images/mcpherson-fem-displacement.jpg" alt="Displacement distribution on the lower arm" /></span>
+						The final geometry was validated in SolidWorks Simulation, modeling half of the (symmetric) component with a spherical joint constraint at C2, a pin constraint at C1, and a roller constraint at the ball joint, loaded with the B<sub>u</sub>/B<sub>v</sub> reaction forces computed above. The analysis predicts a maximum von Mises stress of 136 MPa (yielding safety factor of 2.01) and a maximum displacement of 1.59 mm, for a final component mass of 1.507 kg.
+					</p>
+					<div style="clear: both;"></div>
+
+					<h3 style="margin-top: 2em;">Suspension Assembly &amp; Technical Drawing</h3>
+					<p>
+						<span class="image left"><img src="images/mcpherson-assembly-2.jpg" alt="McPherson suspension assembly, internal view" /></span>
+						With the lower arm finalized, the complete McPherson strut assembly &mdash; strut, coil spring, hub carrier, brake caliper, lower arm and tie rod &mdash; was modeled in Siemens NX according to the optimized kinematic points, and issued as a full A0 production drawing (shown below) detailing the assembly, its kinematic reference points and overall dimensions.
+					</p>
+					<div style="clear: both;"></div>
+					<span class="image fit"><img src="images/mcpherson-tavola.jpg" alt="McPherson suspension assembly technical drawing" /></span>
 
 					<h3 style="margin-top: 2em;">Tools and Technologies</h3>
 					<ul>
-						<li><strong>Kinematics & Optimization:</strong> MATLAB (ANN surrogate modeling, SQP optimization)</li>
-						<li><strong>CAD, Topology Optimization & FEA:</strong> SolidWorks</li>
-						<li><strong>Key Concepts:</strong> Suspension kinematics, die-casting design constraints, structural sizing and FEA validation</li>
+						<li><strong>Kinematics & Optimization:</strong> MATLAB (SimMechanics, <code>fmincon</code> constrained optimization)</li>
+						<li><strong>CAD & FEA:</strong> Siemens NX, SolidWorks Simulation</li>
+						<li><strong>Key Concepts:</strong> Suspension kinematics, forging-driven design, packaging/envelope constraints, structural sizing and FEA validation</li>
 					</ul>
 
 					<ul class="actions" style="margin-top: 2em;">
-						<li><a href="docs/McPherson_Suspension_Report.pdf" target="_blank" class="button primary icon solid fa-download">View Report</a></li>
+						<li><a href="docs/RORV_Report.pdf" target="_blank" class="button primary icon solid fa-download">View Report</a></li>
+						<li><a href="docs/McPherson_Tavola.pdf" target="_blank" class="button icon solid fa-download">View Technical Drawing</a></li>
 					</ul>
 				</div>
 			</div>

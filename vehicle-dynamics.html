@@ -30,15 +30,76 @@
 				<div class="inner">
 					<h1>Vehicle Dynamics and Control</h1>
 					<p>
-						<span class="image left"><img src="images/vehicle-dynamics-banner.jpg" alt="Vehicle Dynamics and Control" /></span>
-						A full-vehicle dynamics study of a race car developed for the "Vehicle Dynamics and Control" course at Politecnico di Milano, spanning tire characterization, longitudinal/lateral/vertical dynamics, multibody simulation, and lap-time simulation. Starting from a combined-slip tire model, the study builds up through longitudinal traction and braking control, ride comfort analysis of semi-active and active suspensions across ISO road classes, and linear single-track stability analysis (roll stiffness distribution, eigenvalue/eigenvector analysis) into full nonlinear handling maneuvers (steering pad, step steer, sine dwell, double lane change, sine sweep).
-						<span class="image right"><img src="images/vehicle-dynamics-2.jpg" alt="Steering wheel angle time history" /></span>
+						A full-vehicle dynamics study of a race car developed for the "Vehicle Dynamics and Control" course at Politecnico di Milano, progressing from tire characterization to longitudinal, vertical and lateral dynamics, multibody suspension and full-vehicle simulation, and lap-time simulation. Each lab below builds on the results of the previous one, culminating in a full-circuit simulation studying the effect of aerodynamic balance on lap performance.
+					</p>
+
+					<h3 style="margin-top: 2em;">Tire Lab &mdash; Combined-Slip Grip Modeling</h3>
+					<p>
+						<span class="image left"><img src="images/vd-friction-ellipse.jpg" alt="Combined Fx-Fy friction ellipse" /></span>
+						The starting point of the study is a combined-slip tire model, characterizing how the tire's longitudinal (F<sub>x</sub>) and lateral (F<sub>y</sub>) grip interact through the friction ellipse shown on the left: for a given slip angle &alpha;, the available F<sub>x</sub> shrinks as more lateral force is demanded, and vice versa for F<sub>y</sub> as a function of slip ratio &kappa; &mdash; the fundamental trade-off behind every braking-while-cornering and traction-while-cornering maneuver.
+					</p>
+					<div style="clear: both;"></div>
+					<div class="row">
+						<div class="col-4 col-12-small">
+							<span class="image fit"><img src="images/vd-combined-slip-fx.jpg" alt="Fx vs slip ratio for varying slip angle" /></span>
+						</div>
+						<div class="col-4 col-12-small">
+							<span class="image fit"><img src="images/vd-vertical-load-fx.jpg" alt="Fx vs slip ratio for varying vertical load" /></span>
+						</div>
+						<div class="col-4 col-12-small">
+							<span class="image fit"><img src="images/vd-friction-coeff.jpg" alt="Fx vs slip ratio for varying friction coefficient" /></span>
+						</div>
+					</div>
+					<p>
+						The model was then characterized against its main sensitivities: combined slip (F<sub>x</sub> collapsing as slip angle &alpha; increases, left), vertical load F<sub>z</sub> (grip growing with load but with diminishing returns, center), and road friction coefficient &mu; (grip scaling down proportionally on low-grip surfaces, right) &mdash; together with the tire's transient response to fast slip oscillations, which sets the bandwidth limits for any controller built on top of this model.
+					</p>
+
+					<h3 style="margin-top: 2em;">Longitudinal Dynamics Lab</h3>
+					<p>
+						<span class="image left"><img src="images/vd-longitudinal-forces.jpg" alt="Front and rear longitudinal forces during a traction event" /></span>
+						Using the tire model above, motor working points were derived for different accelerator positions, and a front/rear ideal force and brake-pressure distribution was computed to keep both axles at their combined-slip limit simultaneously. A closed-loop longitudinal speed controller (PI, gains tuned per target speed) was then designed and validated against step speed targets and wind gust disturbances at highway speeds, with the resulting front/rear force split shown on the left for a representative traction event.
 					</p>
 					<div style="clear: both;"></div>
 
+					<h3 style="margin-top: 2em;">Vehicle Vertical Dynamics Lab</h3>
 					<p>
-						The kinematic and compliance behavior of the suspension was then modeled and optimized in ADAMS/Car, before validating the full vehicle in ADAMS multibody simulations under step steer, single/double lane change and constant-radius cornering maneuvers. The project concluded with a VI-Grade lap simulation on a full circuit, studying the effect of front/rear anti-roll bar configuration and aerodynamic balance (front/rear downforce distribution) on lap trajectory, downforce, and lateral dynamics.
+						<span class="image left"><img src="images/vd-road-holding.jpg" alt="Road holding frequency response for varying damping ratio" /></span>
+						A quarter-car model was used to study ride comfort and road holding as a function of the front/rear damper's damping ratio h, comparing passive, semi-active (skyhook-like) and active suspension strategies across ISO road roughness classes A and B. The road-holding frequency response (left) highlights the classic trade-off: low damping improves comfort but produces a pronounced wheel-hop resonance peak, while higher damping flattens the response at the cost of transmitted vibration &mdash; informing the selection of h=0.35 (front) and h=0.4 (rear) adopted for the rest of the study.
 					</p>
+					<div style="clear: both;"></div>
+
+					<h3 style="margin-top: 2em;">Vehicle Lateral Dynamics Lab 1 &amp; 2</h3>
+					<div class="row">
+						<div class="col-6 col-12-small">
+							<span class="image fit"><img src="images/vd-axle-characteristic.jpg" alt="Effective axle characteristic with and without load transfer" /></span>
+						</div>
+						<div class="col-6 col-12-small">
+							<span class="image fit"><img src="images/vd-root-locus.jpg" alt="Root locus of the linear single-track model" /></span>
+						</div>
+					</div>
+					<p>
+						A linearized single-track (bicycle) model was used to study the effect of roll-stiffness distribution (k<sub>roll</sub>) on the effective axle cornering characteristics (left) and on the vehicle's yaw/sideslip stability, tracked via the root locus of the linearized eigenvalues (right) as speed increases. The resulting handling behavior was then verified with the full non-linear model under steady-state cornering (steering pad) and transient maneuvers &mdash; step steer, sine dwell and sine sweep &mdash; at multiple speeds and roll-stiffness settings.
+					</p>
+					<div style="clear: both;"></div>
+					<p>
+						<span class="image left"><img src="images/vd-handling-diagram.jpg" alt="Handling diagram: steering angle vs lateral acceleration" /></span>
+						The handling diagram on the left (steering angle required per unit lateral acceleration, at multiple speeds) summarizes the vehicle's understeer/oversteer balance across the speed range, closing the loop between the single-track model predictions and the full nonlinear vehicle's cornering behavior. Path-following control was then added to track double-lane-change and sine-sweep trajectories, comparing the linearized and full nonlinear vehicle models.
+					</p>
+					<div style="clear: both;"></div>
+
+					<h3 style="margin-top: 2em;">ADAMS Suspensions &amp; Full Vehicle Lab</h3>
+					<p>
+						<span class="image left"><img src="images/vd-adams-kinematics.jpg" alt="ADAMS suspension kinematics optimization" /></span>
+						The suspension's kinematic hardpoints (lower control arm and tie-rod outboard points) were re-optimized in ADAMS/Car to minimize unwanted wheel travel-induced steer, comparing the original and optimized geometries (left). The full vehicle was then assembled and tested in ADAMS under step steer, single- and double-lane-change, and constant-radius cornering maneuvers to validate the multibody model against the analytical single-track predictions from the previous labs.
+					</p>
+					<div style="clear: both;"></div>
+
+					<h3 style="margin-top: 2em;">VI-Grade Lab &mdash; Lap Simulation</h3>
+					<p>
+						<span class="image left"><img src="images/vehicle-dynamics-banner.jpg" alt="Flying lap trajectory from the VI-Grade simulation" /></span>
+						The study concluded with a VI-Grade driver-in-the-loop simulation of a full flying lap (trajectory shown on the left), used to evaluate the effect of front/rear anti-roll bar configuration on step-steer response, and &mdash; on a race-car aero model &mdash; the effect of front/rear aerodynamic downforce balance on lap trajectory, lateral acceleration, and aerodynamic drag, comparing a forward-biased, rearward-biased and balanced downforce split against the same baseline lap.
+					</p>
+					<div style="clear: both;"></div>
 
 					<h3 style="margin-top: 2em;">Tools and Technologies</h3>
 					<ul>
