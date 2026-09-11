@@ -1,0 +1,78 @@
+<!DOCTYPE HTML>
+<html>
+	<head>
+		<title>Industrial Gearmotor Redesign - Leonardo Russo</title>
+		<meta charset="utf-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
+		<link rel="stylesheet" href="assets/css/main.css" />
+		<noscript><link rel="stylesheet" href="assets/css/noscript.css" /></noscript>
+	</head>
+	<body class="is-preload">
+		<div id="wrapper">
+			<header id="header">
+				<div class="inner">
+					<a href="index.html" class="logo">
+						<span class="symbol"><img src="images/logo.svg" alt="" /></span><span class="title">Portfolio</span>
+					</a>
+					<nav><ul><li><a href="#menu">Portfolio</a></li></ul></nav>
+				</div>
+			</header>
+				<nav id="menu">
+					<h2>Menu</h2>
+					<ul>
+						<li><a href="index.html">Portfolio</a></li>
+						<li><a href="education.html">Education</a></li>
+						<li><a href="certifications.html">Certifications</a></li>
+					</ul>
+				</nav>
+
+			<div id="main">
+				<div class="inner">
+					<h1>Industrial Gearmotor Redesign</h1>
+					<p>
+						<span class="image left"><img src="images/motoriduttore-banner.jpg" alt="Gearmotor power flow scheme" /></span>
+						Group course project (Mechanical Design / Construction of Machines, Politecnico di Milano, June 2024) focused on the redesign of the central reduction stage of a three-stage industrial gearmotor, to allow it to transmit a substantially higher power &mdash; from 1&nbsp;kW to 2.4&nbsp;kW &mdash; while keeping the overall reduction ratio (41.7) and the gearmotor's external envelope unchanged. Working with four teammates, I contributed to the sizing and verification of the central shaft and its mounted components.
+					</p>
+					<div style="clear: both;"></div>
+
+					<h3 style="margin-top: 2em;">Design & Verification</h3>
+					<p>
+						<span class="image left"><img src="images/motoriduttore-2.jpg" alt="Shaft finite element stress analysis" /></span>
+						Starting from the load cycle and the power/torque flow through the three reduction stages, the internal actions on the central shaft were derived and used to size and verify the shaft, the gears and the connecting key. The shaft (16MnCr5) was checked for static strength, fatigue, deflection and flexural/torsional critical speed; the gears (16NiCr4) were verified against pitting and bending fatigue; the bearings were checked for fatigue life, and the key (C45) for contact pressure. The final design was cross-checked with a finite element analysis of the shaft-gear assembly and documented in a full set of construction drawings.
+					</p>
+					<div style="clear: both;"></div>
+					<ul>
+						<li><strong>Load & Power Flow Analysis:</strong> Derivation of speeds, torques and bearing reactions across the 3-stage, 41.7:1 reduction.</li>
+						<li><strong>Shaft Design:</strong> Static, fatigue, deflection and critical-speed (flexural & torsional) verification of the central shaft in 16MnCr5.</li>
+						<li><strong>Gear & Bearing Verification:</strong> Pitting and bending fatigue checks on 16NiCr4 gears, fatigue life verification of the supporting bearings.</li>
+						<li><strong>FEM Validation & Drawings:</strong> Finite element cross-check of the redesigned stage and a complete set of construction drawings.</li>
+					</ul>
+
+					<h3 style="margin-top: 2em;">Tools and Technologies</h3>
+					<ul>
+						<li><strong>Mechanical Design:</strong> Shaft/gear/bearing/key sizing per standard mechanical design methods (fatigue, pitting, critical speed)</li>
+						<li><strong>Simulation:</strong> Finite Element Analysis of the shaft-gear assembly</li>
+						<li><strong>Documentation:</strong> Construction & tolerancing drawings</li>
+					</ul>
+
+					<ul class="actions" style="margin-top: 2em;">
+						<li><a href="docs/Progettazione_Motoriduttore.pdf" target="_blank" class="button primary icon solid fa-download">View Report</a></li>
+					</ul>
+				</div>
+			</div>
+
+			<footer id="footer">
+				<div class="inner">
+					<ul class="copyright">
+						<li>&copy; Leonardo Russo. All rights reserved</li><li>Design: <a href="http://html5up.net">HTML5 UP</a></li>
+					</ul>
+				</div>
+			</footer>
+		</div>
+		<script src="assets/js/jquery.min.js"></script>
+		<script src="assets/js/browser.min.js"></script>
+		<script src="assets/js/breakpoints.min.js"></script>
+		<script src="assets/js/util.js"></script>
+		<script src="assets/js/main.js"></script>
+	</body>
+</html>

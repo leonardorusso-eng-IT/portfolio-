@@ -1,0 +1,71 @@
+<!DOCTYPE HTML>
+<html>
+	<head>
+		<title>Metamaterials & Metastructures - Leonardo Russo</title>
+		<meta charset="utf-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
+		<link rel="stylesheet" href="assets/css/main.css" />
+		<noscript><link rel="stylesheet" href="assets/css/noscript.css" /></noscript>
+	</head>
+	<body class="is-preload">
+		<div id="wrapper">
+			<header id="header">
+				<div class="inner">
+					<a href="index.html" class="logo">
+						<span class="symbol"><img src="images/logo.svg" alt="" /></span><span class="title">Portfolio</span>
+					</a>
+					<nav><ul><li><a href="#menu">Portfolio</a></li></ul></nav>
+				</div>
+			</header>
+				<nav id="menu">
+					<h2>Menu</h2>
+					<ul>
+						<li><a href="index.html">Portfolio</a></li>
+						<li><a href="education.html">Education</a></li>
+						<li><a href="certifications.html">Certifications</a></li>
+					</ul>
+				</nav>
+
+			<div id="main">
+				<div class="inner">
+					<h1>Metamaterials & Metastructures</h1>
+					<p>
+						<span class="image left"><img src="images/metamaterials-banner.jpg" alt="Instrumented periodic beam test setup" /></span>
+						Course project for "Metamaterials and Metastructures" (Prof. Gabriele Cazzulani, Politecnico di Milano), focused on the design and experimental testing of a periodic beam fitted with piezoelectric patches and shunt circuits to control elastic wave propagation. The beam was modeled as a time-invariant periodic structure, first in MATLAB via the Transfer Matrix Method and then in Comsol Multiphysics with an equivalent piezoelectric-shunt stiffness, to compute its dispersion relation and band-gap behavior.
+					</p>
+					<div style="clear: both;"></div>
+
+					<p>
+						<span class="image left"><img src="images/metamaterials-2.jpg" alt="Piezo-shunt circuitry on the test beam" /></span>
+						The effective electromechanical coupling coefficient of the piezoelectric patches was first verified experimentally (short-circuit vs open-circuit response), then a sensitivity analysis was carried out on the dispersion relation for different shunt topologies &mdash; inductive (L), resistive-inductive (RL), and RLC shunts with negative capacitance &mdash; comparing numerical predictions against experimental data on the physical setup. The project concluded by introducing time-varying, space-time-modulated shunts and analyzing numerically (via Plane Wave Expansion and FDTD time-domain simulation in MATLAB) their effect on wave transport and on the boundary modes of the finite structure.
+					</p>
+					<div style="clear: both;"></div>
+
+					<h3 style="margin-top: 2em;">Tools and Technologies</h3>
+					<ul>
+						<li><strong>Modeling & Simulation:</strong> MATLAB (Transfer Matrix Method, Plane Wave Expansion, FDTD time simulation), Comsol Multiphysics (FEM)</li>
+						<li><strong>Experimental:</strong> Instrumented periodic beam with piezoelectric patches and shunt circuits, motion-tracking camera setup</li>
+						<li><strong>Key Concepts:</strong> Dispersion relation & band gaps, piezoelectric shunt damping, negative capacitance circuits, space-time modulated metamaterials</li>
+					</ul>
+
+					<ul class="actions" style="margin-top: 2em;">
+						<li><a href="docs/Metamaterials_Course_Presentation.pdf" target="_blank" class="button primary icon solid fa-download">View Presentation</a></li>
+					</ul>
+				</div>
+			</div>
+
+			<footer id="footer">
+				<div class="inner">
+					<ul class="copyright">
+						<li>&copy; Leonardo Russo. All rights reserved</li><li>Design: <a href="http://html5up.net">HTML5 UP</a></li>
+					</ul>
+				</div>
+			</footer>
+		</div>
+		<script src="assets/js/jquery.min.js"></script>
+		<script src="assets/js/browser.min.js"></script>
+		<script src="assets/js/breakpoints.min.js"></script>
+		<script src="assets/js/util.js"></script>
+		<script src="assets/js/main.js"></script>
+	</body>
+</html>
