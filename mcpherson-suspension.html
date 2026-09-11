@@ -1,0 +1,79 @@
+<!DOCTYPE HTML>
+<html>
+	<head>
+		<title>McPherson Suspension Design - Leonardo Russo</title>
+		<meta charset="utf-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
+		<link rel="stylesheet" href="assets/css/main.css" />
+		<noscript><link rel="stylesheet" href="assets/css/noscript.css" /></noscript>
+	</head>
+	<body class="is-preload">
+		<div id="wrapper">
+			<header id="header">
+				<div class="inner">
+					<a href="index.html" class="logo">
+						<span class="symbol"><img src="images/logo.svg" alt="" /></span><span class="title">Portfolio</span>
+					</a>
+					<nav><ul><li><a href="#menu">Portfolio</a></li></ul></nav>
+				</div>
+			</header>
+				<nav id="menu">
+					<h2>Menu</h2>
+					<ul>
+						<li><a href="index.html">Portfolio</a></li>
+						<li><a href="education.html">Education</a></li>
+						<li><a href="certifications.html">Certifications</a></li>
+					</ul>
+				</nav>
+
+			<div id="main">
+				<div class="inner">
+					<h1>McPherson Suspension Design</h1>
+					<p>
+						<span class="image left"><img src="images/mcpherson-suspension-banner.jpg" alt="McPherson suspension assembly" /></span>
+						Design of a front McPherson suspension for a front-wheel-drive vehicle, developed for the "Road and Off-Road Vehicle Design" course at Politecnico di Milano. Starting from target camber and steering angle curves as a function of wheel travel, the suspension's kinematic hardpoints were optimized with an Artificial Neural Network trained on kinematic simulations, coupled to a constrained non-linear optimization (SQP) in MATLAB that minimized the error between the ANN-predicted camber/steer curves and the targets, within the allowable packaging space for each joint.
+					</p>
+					<div style="clear: both;"></div>
+
+					<h3 style="margin-top: 2em;">Lower Arm Design & Structural Verification</h3>
+					<p>
+						<span class="image left"><img src="images/mcpherson-suspension-2.jpg" alt="Suspension kinematic hardpoints" /></span>
+						With the kinematics fixed, the worst-case combined loading condition (vertical, lateral and longitudinal forces applied simultaneously at the contact patch) was used to derive the reaction forces at the lower arm's bushings. The lower arm itself was designed for die casting in aluminium alloy EN AB 46000, starting from a rough first sketch, refined through SolidWorks' topological optimization to guide material distribution, and converted into a manufacturable final geometry complete with draft angles and a parting plane.
+						<span class="image right"><img src="images/mcpherson-suspension-3.jpg" alt="Lower arm final design" /></span>
+					</p>
+					<div style="clear: both;"></div>
+					<ul>
+						<li><strong>Kinematic Optimization:</strong> ANN-based surrogate model of suspension kinematics + SQP optimization in MATLAB to hit camber/steer targets at full compression, nominal and full extension.</li>
+						<li><strong>Structural Sizing:</strong> Worst-case load computation (k=2.5 dynamic factor) and equilibrium-based sizing of the lower arm's critical cross-section.</li>
+						<li><strong>Manufacturing-Driven Design:</strong> Topological optimization followed by a die-casting-compatible redesign, reaching a final weight of 3.51 kg.</li>
+						<li><strong>FEA Validation:</strong> Finite element verification of the final lower arm design, confirming a safety factor of 1.37 against yielding.</li>
+					</ul>
+
+					<h3 style="margin-top: 2em;">Tools and Technologies</h3>
+					<ul>
+						<li><strong>Kinematics & Optimization:</strong> MATLAB (ANN surrogate modeling, SQP optimization)</li>
+						<li><strong>CAD, Topology Optimization & FEA:</strong> SolidWorks</li>
+						<li><strong>Key Concepts:</strong> Suspension kinematics, die-casting design constraints, structural sizing and FEA validation</li>
+					</ul>
+
+					<ul class="actions" style="margin-top: 2em;">
+						<li><a href="docs/McPherson_Suspension_Report.pdf" target="_blank" class="button primary icon solid fa-download">View Report</a></li>
+					</ul>
+				</div>
+			</div>
+
+			<footer id="footer">
+				<div class="inner">
+					<ul class="copyright">
+						<li>&copy; Leonardo Russo. All rights reserved</li><li>Design: <a href="http://html5up.net">HTML5 UP</a></li>
+					</ul>
+				</div>
+			</footer>
+		</div>
+		<script src="assets/js/jquery.min.js"></script>
+		<script src="assets/js/browser.min.js"></script>
+		<script src="assets/js/breakpoints.min.js"></script>
+		<script src="assets/js/util.js"></script>
+		<script src="assets/js/main.js"></script>
+	</body>
+</html>
